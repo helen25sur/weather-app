@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="src/styles/style.css">
-  <script src="src/index.js" defer></script>
+  <script src="src/scripts/index.js" defer></script>
   <title>Weather</title>
 </head>
 
@@ -21,6 +21,8 @@
         <form id="search-form" class="search-form row align-items-center col-md-7">
           <div class="col-12">
             <input type="search" id="search" class="search-input form-control form-control-sm rounded-0"
+              autocomplete="off"
+              autofocus="on"
               placeholder="Enter a city">
           </div>
           <div class="search-btn_block">
@@ -30,7 +32,10 @@
       </header>
       <main class="app-main card-body row justify-content-center">
         <section class="app-weather-days row my-4">
-          <h2 id="city" class="city-name card-title mb-3 bg-light-subtle py-2 shadow-lg rounded-1">Thessaloníki</h2>
+          <div class="mb-3 bg-light-subtle py-2 shadow-lg rounded-1">
+            <h2 id="city" class="city-name card-title ">Thessaloníki</h2>
+            <span id="current-date"><strong>Friday, 23:10</strong></span>
+          </div>
           <div
             class="weather-day weather-day_active py-2 pb-3 col-3 border-end border-dark-subtle bg-light-subtle shadow-sm rounded-1">
             <div class="row">
@@ -38,7 +43,7 @@
               <span class="col fs-1"><i class="fa-solid fa-cloud-moon-rain"></i></span>
               <div class="col">
                 <span>Low</span><br>
-                <span class="fs-3">10°</span><br>
+                <span id="current-temperature" class="temp-celsius fs-3">10</span><br>
                 <a class="fs-5" href="#" id="celsius">°C</a> | <a class="fs-5" href="#" id="fahrenheit">°F</a>
               </div>
             </div>
