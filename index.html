@@ -8,239 +8,230 @@
   <script src="https://kit.fontawesome.com/f40fd5b04a.js" crossorigin="anonymous" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="src/styles/style.css">
+  <script src="src/index.js" defer></script>
   <title>Weather</title>
 </head>
 
 <body>
-  <div class="container ">
-    <div class="row vh-100 align-content-center">
-      <div class="col-10 mx-auto">
-        <div class="card mb-3">
-          <div class="card-header text-bg-info">
-            <div class="row align-items-center">
-              <div class="col-md-4">
-                <h1 class="text-light text-uppercase">Weather</h1>
-              </div>
-              <div class="col-md-8">
-                <form class="row align-items-center">
-                  <div class="col-10">
-                    <input type="search" class="form-control form-control-sm rounded-0" placeholder="Enter a city">
-                  </div>
-                  <div class="col-2">
-                    <button type="submit" class="btn text-light"><i class="fa-solid fa-magnifying-glass"></i></button>
-                  </div>
-                </form>
-              </div>
-            </div>
+  <div class="container row vh-100 align-content-center mx-auto">
+    <div class="app-content col-10 mx-auto card mb-3 shadow-lg">
+      <header class="app-header card-header row align-items-center justify-content-between">
+        <h1 class="app-title text-uppercase col-md-5">Weather</h1>
+        <form id="search-form" class="search-form row align-items-center col-md-7">
+          <div class="col-12">
+            <input type="search" id="search" class="search-input form-control form-control-sm rounded-0"
+              placeholder="Enter a city">
           </div>
-          <div class="card-body bg-primary-subtle">
+          <div class="search-btn_block">
+            <button type="submit" class="btn search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </form>
+      </header>
+      <main class="app-main card-body row justify-content-center">
+        <section class="app-weather-days row my-4">
+          <h2 id="city" class="city-name card-title mb-3 bg-light-subtle py-2 shadow-lg rounded-1">Thessaloníki</h2>
+          <div
+            class="weather-day weather-day_active py-2 pb-3 col-3 border-end border-dark-subtle bg-light-subtle shadow-sm rounded-1">
             <div class="row">
-              <h2 class="card-title text-primary">Thessaloníki</h2>
-            </div>
-            <div class="row my-4">
-              <div class="py-2 col-3 border-end border-dark-subtle bg-light-subtle">
-                <h3 class="fs-5">Tonight</h3>
-                <div class="row">
-                  <div class="col fs-1"><i class="fa-solid fa-cloud-moon-rain"></i></div>
-                  <div class="col">
-                    <p>Low</p>
-                    <p class="fs-3">10°</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col p-1 align-self-end bg-light-subtle border-end border-dark-subtle">
-                <h3 class="fs-6 fw-normal">Sat 11th</h3>
-                <div class="row">
-                  <div class="col fs-3"><i class="fa-regular fa-sun"></i></div>
-                  <div class="col">
-                    <p class="fw-bold">21°</p>
-                    <p class="fw-light">8°</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col p-1 align-self-end bg-light-subtle border-end border-dark-subtle">
-                <h3 class="fs-6 fw-normal">Sun 12th</h3>
-                <div class="row">
-                  <div class="col fs-3"><i class="fa-solid fa-cloud-sun-rain"></i></div>
-                  <div class="col">
-                    <p class="fw-bold">14°</p>
-                    <p class="fw-light">4°</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col p-1 align-self-end bg-light-subtle border-end border-dark-subtle">
-                <h3 class="fs-6 fw-normal">Mon 13th</h3>
-                <div class="row">
-                  <div class="col fs-3"><i class="fa-regular fa-sun"></i></div>
-                  <div class="col">
-                    <p class="fw-bold">15°</p>
-                    <p class="fw-light">3°</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col p-1 align-self-end bg-light-subtle border-end border-dark-subtle">
-                <h3 class="fs-6 fw-normal">Tue 14th</h3>
-                <div class="row">
-                  <div class="col fs-3"><i class="fa-regular fa-sun"></i></div>
-                  <div class="col">
-                    <p class="fw-bold">16°</p>
-                    <p class="fw-light">5°</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col p-1 align-self-end bg-light-subtle border-end border-dark-subtle">
-                <h3 class="fs-6 fw-normal">Wen 15th</h3>
-                <div class="row">
-                  <div class="col fs-3"><i class="fa-solid fa-cloud-rain"></i></div>
-                  <div class="col">
-                    <p class="fw-bold">17°</p>
-                    <p class="fw-light">8°</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row bg-light-subtle">
-              <h3 class="my-4">Light rain showers and a gentle breeze</h3>
-            </div>
-            <div class="row bg-light-subtle pt-2">
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">19</span>:00
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">18°</span>
-                <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12">5%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">20</span>:00
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">18°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">9%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">21</span>:00
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">17°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">10%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">22</span>:00
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">16°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">10%</span>
-              </div>
-             </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">23</span>:00
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">15°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">13%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              <span class="fw-bolder">00</span>:00 <br>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">15°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">15%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">01</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">15°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">22%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">02</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">14°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">60%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">03</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">13°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">61%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">04</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">12°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">20%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">05</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">12°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">16%</span>
-              </div>
-              </div>
-              <div class="col-1 border-end border-dark-subtle bg p-1">
-              <h4 class="fw-normal text-secondary fs-6 text-center">
-              00:<span class="fw-bolder">06</span>
-              </h4>
-              <div class="row text-center">
-                <span class="col-12"><i class="fa-regular fa-moon"></i></span>
-                <span class="col-12 mb-5">10°</span>
-                <span class="col-12 text-info"><i class="fa-solid fa-droplet"></i></span>
-                <span class="col-12 text-info">9%</span>
-              </div>
+              <h3 class="fs-5">Tonight</h3>
+              <span class="col fs-1"><i class="fa-solid fa-cloud-moon-rain"></i></span>
+              <div class="col">
+                <span>Low</span><br>
+                <span class="fs-3">10°</span><br>
+                <a class="fs-5" href="#" id="celsius">°C</a> | <a class="fs-5" href="#" id="fahrenheit">°F</a>
               </div>
             </div>
           </div>
-        </div>
+          <div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm">
+            <h3 class="fs-6 fw-normal">Sat 11th</h3>
+            <div class="row">
+              <span class="col fs-3"><i class="fa-regular fa-sun"></i></span>
+              <div class="col">
+                <p class="fw-bold">21°</p>
+                <p>8°</p>
+              </div>
+            </div>
+          </div>
+          <div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm">
+            <h3 class="fs-6 fw-normal">Sun 12th</h3>
+            <div class="row">
+              <span class="col fs-3"><i class="fa-solid fa-cloud-sun-rain"></i></span>
+              <div class="col">
+                <p class="fw-bold">14°</p>
+                <p>4°</p>
+              </div>
+            </div>
+          </div>
+          <div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm">
+            <h3 class="fs-6 fw-normal">Mon 13th</h3>
+            <div class="row">
+              <span class="col fs-3"><i class="fa-regular fa-sun"></i></span>
+              <div class="col">
+                <p class="fw-bold">15°</p>
+                <p>3°</p>
+              </div>
+            </div>
+          </div>
+          <div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm">
+            <h3 class="fs-6 fw-normal">Tue 14th</h3>
+            <div class="row">
+              <span class="col fs-3"><i class="fa-regular fa-sun"></i></span>
+              <div class="col">
+                <p class="fw-bold">16°</p>
+                <p>5°</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm rounded-end-1">
+            <h3 class="fs-6 fw-normal">Wen 15th</h3>
+            <div class="row">
+              <span class="col fs-3"><i class="fa-solid fa-cloud-rain"></i></span>
+              <div class="col">
+                <p class="fw-bold">17°</p>
+                <p>8°</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      </div>
+        <section class="weather-details row bg-light-subtle py-2 shadow-lg rounded-1">
+          <h3 class="my-4 weather-description">Light rain showers and a gentle breeze</h3>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">19</span>:00
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">18°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">5%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">20</span>:00
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">18°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">9%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">21</span>:00
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">17°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">10%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">22</span>:00
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">16°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">10%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">23</span>:00
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">15°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">13%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              <span class="fw-bolder">00</span>:00 <br>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">15°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">15%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">01</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">15°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">22%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">02</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">14°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">60%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">03</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">13°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">61%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">04</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">12°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">20%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">05</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">12°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">16%</span>
+            </div>
+          </div>
+          <div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+            <h4 class="fw-normal text-secondary fs-6 text-center">
+              00:<span class="fw-bolder">06</span>
+            </h4>
+            <div class="row text-center">
+              <span class="col-12"><i class="fa-regular fa-moon"></i></span>
+              <span class="col-12 mb-5">10°</span>
+              <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+              <span class="col-12">9%</span>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 </body>
