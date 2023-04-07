@@ -58,3 +58,7 @@ button, input {
   padding-left: 0;
   padding-right: 0;
 }
+
+.github-link {
+  letter-spacing: 2px;
+}
