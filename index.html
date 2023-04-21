@@ -43,13 +43,17 @@
             class="weather-day weather-day_active py-2 pb-3 col-3 border-end border-dark-subtle bg-light-subtle shadow-sm rounded-1">
             <div class="row">
               <h3 class="fs-4">Now</h3>
-              <p id="current-temperature-icon" class="col fs-1"><i class="fa-solid fa-cloud-moon-rain"></i></p>
-              <div class="col">
-                <span class="fs-5" id="current-temperature-description">Low</span><br>
-                <span id="current-temperature" class="temp-celsius fs-3">10</span><br>
-                <a class="fs-5" href="#" id="celsius">°C</a> | <a class="fs-5" href="#" id="fahrenheit">°F</a>
+              <p id="current-temperature-icon" class="col-4 fs-1"><i class="fa-solid fa-cloud-moon-rain"></i></p>
+              <div class="col-8">
+                <span class="fs-5 text-capitalize" id="current-temperature-description">Low</span><br>
+                <div>
+                  <span id="current-temperature" class="temp-celsius fs-3 me-1">10</span>
+                  <a class="fs-5" href="#" id="celsius">°C</a> | <a class="fs-5" href="#" id="fahrenheit">°F</a>
+                </div>
               </div>
             </div>
+            <span class="additional-info" id="humidity">Humidity: <span>75</span>%</span><br>
+            <span class="additional-info" id="wind-speed">Wind speed: <span>5</span>km/h</span>
           </div>
           <div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm">
             <h3 class="fs-5 fw-normal">Sat 11th</h3>
