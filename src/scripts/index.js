@@ -2,13 +2,12 @@ const city = document.body.querySelector('#city');
 
 
 function displayTime() {
-
   const date = new Date();
   const dayOfWeek = date.toLocaleString('en-GB', { weekday: "long" });
-  const hour = date.getHours().toString().length === 1 ? "0" + date.getHours() : date.getHours();
-  const minute = date.getMinutes().toString().length === 1 ? "0" + date.getMinutes() : date.getMinutes();
 
-  const time = `${dayOfWeek}, ${hour}:${minute}`;
+  const hourAndMinute = date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
+
+  const time = `${dayOfWeek}, ${hourAndMinute}`;
   const currentDate = document.body.querySelector("#current-date>strong");
   currentDate.innerText = time;
 }
@@ -99,22 +98,55 @@ function getForecast(cityValue) {
 
 }
 
-function displayHourlyForecast(response) {}
+function displayHourlyForecast(response) {
+  // console.log(response);
+  const weatherDetails = document.querySelector('.weather-details');
+  const forecast = response.data.list;
+  weatherDetails.innerHTML = '';
+  detailsHtml = weatherDetails.innerHTML;
+
+  forecast.forEach((h, i) => {
+    const date = new Date(h.dt * 1000);
+    const time = date.toLocaleString('en-GB', {hour: '2-digit', minute: '2-digit'});
+    const day = date.toLocaleString('en-GB', { weekday: 'short', day: 'numeric' });
+
+    detailsHtml += `<div class="weather-hours col-1 border-end border-dark-subtle bg p-1">
+      <h5 class="fw-normal text-secondary fs-6 text-center">
+        <span class="fw-bold">${day}</span>
+      </h5>
+      <h4 class="fw-normal text-secondary fs-6 text-center">
+        <span class="fw-bolder">${time}</span>
+      </h4>
+      <div class="row text-center">
+        <div class="col-12">
+          <img src='http://openweathermap.org/img/wn/${h.weather[0].icon}@2x.png' alt='${h.weather[0].description} icon' width='30'>
+        </div>
+        <span class="col-12 mb-5">${Math.round(h.main.temp)}°</span>
+        <span class="col-12"><i class="fa-solid fa-droplet"></i></span>
+        <span class="col-12">${Math.round(h.main.humidity)}%</span>
+      </div>
+      </div>`;
+  });
+
+  weatherDetails.innerHTML = detailsHtml;
+}
 
 function getHourlyForecast(cityValue) {
   const apiKey = 'fc1413ef13107061f82b437eba029747';
   const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&appid=${apiKey}`;
 
-    axios
+  axios
     .get(`${geoApiUrl}`)
     .then((resp) => {
-      console.log(resp.data[0].name);
+      const {lat, lon} = resp.data[0];
+      const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=12&appid=${apiKey}&units=metric`;
+      axios
+        .get(apiUrl)
+        .then(displayHourlyForecast);
     })
-    .then(displayHourlyForecast)
     .catch(function (error) {
       console.log(error);
     });
-
 }
 
 function displayFullWeatherAndForecast(city) {
