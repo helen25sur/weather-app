@@ -14,7 +14,7 @@ function displayTime() {
 }
 
 function displayWeather(response) {
-  console.log(response);
+  // console.log(response);
   const temp = Math.round(response.data.main.temp);
   const cityName = response.data.name;
   const humidity = response.data.main.humidity;
@@ -35,7 +35,7 @@ function displayWeather(response) {
   iconEl.alt = "weather icon";
   iconEl.style.width = "60px";
 
-  console.log(iconCode, iconUrl);
+  // console.log(iconCode, iconUrl);
   currentTemp.innerText = temp;
   currentDescription.innerText = response.data.weather[0].description;
   currentIcon.innerHTML = '';
@@ -44,7 +44,7 @@ function displayWeather(response) {
   currentHumidity.innerText = humidity;
   currentWindSpeed.innerText = windSpeed;
 
-  console.log(currentTemp, temp);
+  // console.log(currentTemp, temp);
 }
 
 function getWeather(cityValue) {
@@ -56,6 +56,46 @@ function getWeather(cityValue) {
     .catch(function (error) {
       console.log(error);
     });
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  const dailyForecast = response.data.daily;
+  const blockForecastDays = document.body.querySelector('.app-weather-days');
+  let forecastHTML = blockForecastDays.innerHTML;
+
+  dailyForecast.forEach((d, idx) => {
+    if (idx < 5) {
+    const date = new Date(d.time * 1000);
+    const day = date.toLocaleString('en-GB', { weekday: 'short', day: 'numeric' });
+
+    forecastHTML += `<div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm" id='forecast-day-${idx}'>
+      <h3 class="fs-5 fw-normal"> ${day}th</h3>
+      <div class="row">
+        <div class="col"><img src='${d.condition.icon_url}' alt='${d.condition.icon} icon' width='50'></div>
+         <div class="col">
+          <p class="fw-bold">${Math.round(d.temperature.maximum)}°</p>
+          <p>${Math.round(d.temperature.minimum)}°</p>
+        </div>
+      </div>
+    </div>`;
+    }
+  });
+
+  blockForecastDays.innerHTML = forecastHTML;
+}
+
+function getForecast(cityValue) {
+  const apiKey = "be7of017954f4b25219t2327c4fa94c7";
+  const apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${cityValue}&units=metric&key=${apiKey}`;
+
+  axios
+    .get(`${apiUrl}`)
+    .then(displayForecast)
+    .catch(function (error) {
+      console.log(error);
+    });
+
 }
 
 function searchCity(event) {
@@ -121,3 +161,5 @@ displayTime();
 setInterval(displayTime, 60000);
 
 getWeather(city.innerText, city);
+
+getForecast(city.innerText);
