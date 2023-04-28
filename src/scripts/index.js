@@ -133,13 +133,13 @@ function displayHourlyForecast(response) {
 
 function getHourlyForecast(cityValue) {
   const apiKey = 'fc1413ef13107061f82b437eba029747';
-  const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&appid=${apiKey}`;
+  const geoApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&appid=${apiKey}`;
 
   axios
     .get(`${geoApiUrl}`)
     .then((resp) => {
       const {lat, lon} = resp.data[0];
-      const apiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=12&appid=${apiKey}&units=metric`;
+      const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=12&appid=${apiKey}&units=metric`;
       axios
         .get(apiUrl)
         .then(displayHourlyForecast);
