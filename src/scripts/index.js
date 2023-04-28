@@ -14,7 +14,7 @@ function displayTime() {
 }
 
 function displayWeather(response) {
-  console.log(response);
+  // console.log(response);
   const temp = Math.round(response.data.temperature.current);
   const cityName = response.data.city;
   const humidity = response.data.temperature.humidity;
@@ -59,9 +59,10 @@ function getWeather(cityValue) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  // console.log(response.data.daily);
   const dailyForecast = response.data.daily;
-  const blockForecastDays = document.body.querySelector('.app-weather-days');
+  const blockForecastDays = document.body.querySelector('.weather-days');
+  blockForecastDays.innerHTML = '';
   let forecastHTML = blockForecastDays.innerHTML;
 
   dailyForecast.forEach((d, idx) => {
@@ -98,11 +99,36 @@ function getForecast(cityValue) {
 
 }
 
+function displayHourlyForecast(response) {}
+
+function getHourlyForecast(cityValue) {
+  const apiKey = 'fc1413ef13107061f82b437eba029747';
+  const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityValue}&appid=${apiKey}`;
+
+    axios
+    .get(`${geoApiUrl}`)
+    .then((resp) => {
+      console.log(resp.data[0].name);
+    })
+    .then(displayHourlyForecast)
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
+
+function displayFullWeatherAndForecast(city) {
+  getWeather(city);
+  getForecast(city);
+  getHourlyForecast(city);
+}
+
 function searchCity(event) {
   event.preventDefault();
   const searchInput = document.body.querySelector('#search');
   if (searchInput.value) {
-    getWeather(searchInput.value.trim());
+    const value = searchInput.value.trim();
+    displayFullWeatherAndForecast(value);
   }
   searchInput.value = "";
 }
@@ -118,7 +144,7 @@ function showCurrentLocationWeather() {
     
     axios
       .get(`${apiUrl}`)
-      .then(displayWeather)
+      .then((response) => displayFullWeatherAndForecast(response.data.city))
       .catch(function (error) {
         console.log(error);
       });
@@ -135,6 +161,4 @@ locationBtn.addEventListener('click', showCurrentLocationWeather);
 displayTime();
 setInterval(displayTime, 60000);
 
-getWeather(city.innerText);
-
-getForecast(city.innerText);
+displayFullWeatherAndForecast(city.innerText);
