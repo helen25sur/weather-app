@@ -128,31 +128,6 @@ function showCurrentLocationWeather() {
 const form = document.body.querySelector('#search-form');
 form.addEventListener("submit", searchCity);
 
-function convert(event) {
-  event.preventDefault();
-  const currentTemp = document.body.querySelector("#current-temperature");
-
-  if (event.target.id === "celsius" && !currentTemp.classList.contains('temp-celsius')) {
-    const currentTempValue = +currentTemp.innerText;
-    const celsiusValue = Math.round((currentTempValue - 32) * 0.5556);
-    currentTemp.innerText = celsiusValue;
-    currentTemp.classList.remove('temp-fahrenheit');
-    currentTemp.classList.add('temp-celsius');
-
-  } else if (event.target.id === "fahrenheit" && !currentTemp.classList.contains('temp-fahrenheit')) {
-    const currentTempValue = +currentTemp.innerText;
-    const fahrenheitValue = Math.round((currentTempValue * 1.8) + 32);
-    currentTemp.innerText = fahrenheitValue;
-    currentTemp.classList.remove('temp-celsius');
-    currentTemp.classList.add('temp-fahrenheit');
-  }
-}
-
-const celsius = document.body.querySelector('#celsius');
-const fahrenheit = document.body.querySelector('#fahrenheit');
-celsius.addEventListener('click', convert);
-fahrenheit.addEventListener('click', convert);
-
 const locationBtn = document.body.querySelector('#location-btn');
 
 locationBtn.addEventListener('click', showCurrentLocationWeather);
