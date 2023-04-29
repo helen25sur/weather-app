@@ -27,8 +27,6 @@ function displayWeather(response) {
   const currentHumidity = document.body.querySelector("#humidity>span");
   const currentWindSpeed = document.body.querySelector("#wind-speed>span");
 
-  // const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
   const iconEl = document.createElement("img");
   iconEl.src = iconUrl;
   iconEl.classList.add("weather-icon");
@@ -69,13 +67,13 @@ function displayForecast(response) {
     const date = new Date(d.time * 1000);
     const day = date.toLocaleString('en-GB', { weekday: 'short', day: 'numeric' });
 
-    forecastHTML += `<div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm" id='forecast-day-${idx}'>
+      forecastHTML += `<div class="weather-day col p-2 ps-3 align-self-end bg-light-subtle border-end border-dark-subtle shadow-sm" id='forecast-day-${idx}'>
       <h3 class="fs-5 fw-normal"> ${day}th</h3>
       <div class="row">
         <div class="col"><img src='${d.condition.icon_url}' alt='${d.condition.icon} icon' width='50'></div>
          <div class="col">
           <p class="fw-bold">${Math.round(d.temperature.maximum)}°</p>
-          <p>${Math.round(d.temperature.minimum)}°</p>
+          <p class="fw-light">${Math.round(d.temperature.minimum)}°</p>
         </div>
       </div>
     </div>`;

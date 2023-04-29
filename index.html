@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div class="container row vh-100 align-content-center mx-auto">
+  <div class="container row align-content-center mx-auto">
     <div class="app-content col-10 mx-auto card mb-3 shadow-lg">
       <header class="app-header card-header row align-items-center justify-content-between">
         <h1 class="app-title text-uppercase col-md-5">Weather</h1>
@@ -43,7 +43,7 @@
             class="weather-day weather-day_active py-2 pb-3 col-3 border-end border-dark-subtle bg-light-subtle shadow-sm rounded-1">
             <div class="row">
               <h3 class="fs-4">Now</h3>
-              <p id="current-temperature-icon" class="col-4 fs-1"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="rain-day icon" width="60"></p>
+              <div id="current-temperature-icon" class="col-4 fs-1"><img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="rain-day icon" width="60"></div>
               <div class="col-8">
                 <span class="fs-5 text-capitalize" id="current-temperature-description">Low</span><br>
                 <div>
@@ -54,7 +54,7 @@
             <span class="additional-info" id="humidity">Humidity: <span>75</span>%</span><br>
             <span class="additional-info" id="wind-speed">Wind speed: <span>5</span>km/h</span>
           </div>
-          <div class="weather-days col-9 row">
+          <div class="weather-days col-xl-9 col-12 row">
           </div>
         </section>
 

@@ -12,6 +12,8 @@ body {
   background-size: cover;
   background-position: center;
   color: var(--clr-text);
+  min-height: 100vh;
+  display: flex;
 }
 
 a {
@@ -54,6 +56,15 @@ button, input {
   color: var(--clr-city-name);
 }
 
+.weather-day {
+  min-width: 20%;
+}
+
+#forecast-day-4 {
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
 .weather-details {
   padding-left: 0;
   padding-right: 0;
@@ -65,4 +76,80 @@ button, input {
 
 .github-link {
   letter-spacing: 2px;
+}
+
+@media screen and (max-width: 1200px) {
+  .app-content {
+    margin-top: 2rem;
+  }
+
+  .app-weather-days {
+    justify-content: center;
+  }
+
+  .weather-day_active {
+    min-width: 50%;
+  }
+
+  .weather-days {
+    margin-top: 1rem;
+  }
+
+  #forecast-day-0 {
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 995px) {
+  .weather-day {
+    margin: 0.5rem;
+    min-width: 30%;
+    border-radius: 15px;
+  }
+
+  .weather-day_active {
+    min-width: 60%;
+  }
+
+  .weather-details {
+    justify-content: center;
+    row-gap: 1rem;
+  }
+
+  .weather-hours {
+    width: 15%;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .weather-hours img {
+    width: 45px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .search-form .col-12 {
+    padding-right: 0;
+  }
+
+  .weather-day {
+    min-width: 70%;
+    font-size: 20px;
+  }
+
+  .weather-day_active {
+    width: 100%;
+  }
+
+  .weather-day img {
+    width: 85px;
+  }
+
+  .weather-hours {
+    width: 25%;
+  }
+
+  .weather-hours img {
+    width: 55px;
+  }
 }
